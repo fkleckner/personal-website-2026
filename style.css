@@ -1,0 +1,192 @@
+/* ============================================
+   finn kleckner / personal site / 2026
+   canary yellow + slate + red palette.
+   ============================================ */
+
+:root {
+  --paper:        #efdc8e;  /* page background */
+  --paper-2:      #f5d70a;  /* inset cards */
+  --ink:          #9c442b;  /* default text */
+  --ink-soft:     #5c6b7a;  /* secondary text */
+  --rule:         #6b7a8a;  /* arrow markers, dotted lines */
+  --accent:       #d62828;  /* links + highlight */
+  --inset-border: #f33f0d;  /* ridge border on cards */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: "IBM Plex Mono", "JetBrains Mono", "Menlo",
+               "Courier New", Courier, monospace;
+  font-size: 15px;
+  line-height: 1.65;
+  padding: 4rem 1.25rem 3rem;
+  display: flex;
+  justify-content: center;
+  /* subtle slate-tinted texture */
+  background-image:
+    radial-gradient(at 20% 30%, rgba(47,62,79,0.05), transparent 40%),
+    radial-gradient(at 80% 70%, rgba(47,62,79,0.04), transparent 40%);
+}
+
+/* ---------- layout: banner fixed left, content centered ---------- */
+
+main {
+  width: 100%;
+  max-width: 38rem;
+}
+
+.sidebar {
+  position: fixed;
+  top: 2rem;
+  left: 1.5rem;
+}
+
+/* ---------- ascii banner ---------- */
+
+.banner {
+  display: inline-block;
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.15;
+  color: var(--ink);
+  white-space: pre;
+  text-align: left;
+}
+
+/* nav words embedded in the banner: red, no underline,
+   highlighter-style hover */
+.banner a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.banner a:hover,
+.banner a:focus {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+/* ---------- section headings ---------- */
+
+h2 {
+  font-size: 0.95rem;
+  font-weight: normal;
+  letter-spacing: 0.12em;
+  margin: 0 0 1.25rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- card-style blocks (projects + currently) ---------- */
+
+.project-list,
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-list li,
+.currently {
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 3pt;
+  background-color: var(--paper-2);
+  border: 2px ridge var(--inset-border);
+}
+
+.project-list a {
+  font-weight: 500;
+}
+
+.project-list p {
+  margin: 0.2rem 0 0;
+  padding-left: 1.25rem;
+  position: relative;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.project-list p::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--rule);
+}
+
+.currently {
+  color: var(--ink-soft);
+}
+
+.currently em {
+  color: var(--ink);
+  font-style: normal;
+}
+
+/* ---------- elsewhere / contact links ---------- */
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- links ---------- */
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: background 80ms linear, color 80ms linear;
+}
+
+a:hover,
+a:focus {
+  background: var(--accent);
+  color: var(--paper);
+  outline: none;
+}
+
+/* ---------- footer ---------- */
+
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ---------- responsive ---------- */
+
+/* below this width the fixed-left banner crowds the centered
+   content, so unpin it and let it flow above. */
+@media (max-width: 900px) {
+  .sidebar {
+    position: static;
+    top: auto;
+    left: auto;
+    margin: 0 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body { padding: 2.5rem 1rem 2rem; font-size: 14px; }
+  .sidebar .banner { font-size: 0.5rem; }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
